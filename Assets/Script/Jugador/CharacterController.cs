@@ -44,6 +44,7 @@ public class CharacterController : MonoBehaviour
            {
             //se crea la bala cada vez que presiono el boton con todo y script Bullet
             Instantiate (shootPrefab, shootOrigin, false);
+            AudioManager.instance.PlaySound(0);
            }
 
         if (SimpleInput.GetButtonDown("Shield"))
@@ -51,6 +52,16 @@ public class CharacterController : MonoBehaviour
             //se crea la bala cada vez que presiono el boton con todo y script Bullet
             //(shieldPrefab, shieldOrigin, true);
             shield.SetActive(true);
+            AudioManager.instance.PlaySound(1);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Enemigo")
+        {
+            HealthPlayer.instance.currentHealth--;
+            Debug.Log("test");
         }
     }
 }

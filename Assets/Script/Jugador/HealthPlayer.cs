@@ -38,6 +38,11 @@ public class HealthPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (currentHealth <= 0)
+        {
+            gameObject.SetActive(false);
+        }
+
         //Si el contador de invencibilidad es mayor que 0
         if (invincibleCounter > 0)
         {
@@ -51,4 +56,5 @@ public class HealthPlayer : MonoBehaviour
             }
         }
     }
+
 }
