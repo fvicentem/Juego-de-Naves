@@ -9,6 +9,10 @@ public class LevelManager : MonoBehaviour
     //Hacemos un Singleton del script. Es decir, hacemos que solamente pueda haber un script de este tipo. Podremos acceder con esta instance a este script desde cualquier lugar
     public static LevelManager instance;
 
+    public bool isLimitedScene;
+    public float levelTime =5f;
+    public string nextScene;
+
     //Variable para llevar un conteo de gemas que hemos cogido
     public int gemCollected;
 
@@ -28,6 +32,8 @@ public class LevelManager : MonoBehaviour
     {
         //Inicializamos el tiempo que llevamos en el nivel
         timeInLevel = 0f;
+        if (isLimitedScene)
+            StartCoroutine(LevelTime());
     }
 
     // Update is called once per frame
@@ -37,7 +43,17 @@ public class LevelManager : MonoBehaviour
         timeInLevel += Time.deltaTime;
     }
 
-    //Método para hacerle respawn al jugador
+    IEnumerator LevelTime ()
+    {
+        yield return new WaitForSeconds(levelTime);
+        ChangeScene();
+    }
+
+    public void ChangeScene()
+    {
+        //To do: fadescreen
+        SceneManager.LoadScene(nextScene);
+    }
    
 
   

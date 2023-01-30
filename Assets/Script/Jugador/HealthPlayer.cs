@@ -20,12 +20,6 @@ public class HealthPlayer : MonoBehaviour
     //Variable para acceder al sprite renderer del jugador
     private SpriteRenderer theSR;
 
-    private void Awake()
-    {
-        //Significa que la instance del PlayerHealthController va a ser este propio script
-        instance = this;
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -35,12 +29,19 @@ public class HealthPlayer : MonoBehaviour
         theSR = GetComponent<SpriteRenderer>();
     }
 
+    private void Awake()
+    {
+        //Significa que la instance del PlayerHealthController va a ser este propio script
+        instance = this;
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (currentHealth <= 0)
         {
             gameObject.SetActive(false);
+            UIController.instance.UpdateHealthDisplay();
         }
 
         //Si el contador de invencibilidad es mayor que 0

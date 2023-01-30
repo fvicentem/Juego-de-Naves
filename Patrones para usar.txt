@@ -1,0 +1,5 @@
+Observer:
+
+Fly Weight: Hecho
+
+Object Pool:

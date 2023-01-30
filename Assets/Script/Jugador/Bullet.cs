@@ -24,11 +24,12 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyController>() != null) 
         {
-            Destroy(collision.gameObject);
-            Destroy(gameObject);
-            
-            
+            collision.GetComponent<Animator>().SetTrigger("Muerte Trigger");
+            //Debug.Log("Empieza la corutina");
+            Destroy(collision.gameObject, 0.5f); 
         }
        
     }
+
+   
 }

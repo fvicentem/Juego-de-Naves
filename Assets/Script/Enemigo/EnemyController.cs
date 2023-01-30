@@ -6,14 +6,21 @@ public class EnemyController : MonoBehaviour
 {
 
     public float speed; //velocidad del enemigo
+    public Animator anim;
+    public static EnemyController instance;
 
 
-
-
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+    }
     // Start is called before the first frame update
     void Start()
     {
-       
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -31,10 +38,12 @@ public class EnemyController : MonoBehaviour
         //this is the bottom-left point of the screen
         Vector2 min = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
 
-        if (transform.position.y < min.y) 
-        {
-            Destroy(gameObject);
-        }
+        //if (transform.position.y < min.y) 
+        //{
+            
+        //    Destroy(gameObject);
+            
+        //}
 
 
     }

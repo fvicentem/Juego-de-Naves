@@ -62,6 +62,7 @@ public class CharacterController : MonoBehaviour
         {
             HealthPlayer.instance.currentHealth--;
             Debug.Log("test");
+            UIController.instance.UpdateHealthDisplay();
         }
     }
 }
